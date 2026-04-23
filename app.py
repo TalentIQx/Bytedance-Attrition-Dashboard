@@ -496,16 +496,25 @@ with tabs[4]:
         fill='toself',
         name='Priority Level',
         line=dict(color=TIKTOK_COLORS['primary_pink'], width=3),
-        fillcolor=f"{TIKTOK_COLORS['primary_pink']}40"
-    ))
-    
-    fig_polar.add_trace(go.Scatterpolar(
-        r=timeline_data['Investment'],
-        theta=timeline_data['Phase'],
-        fill='toself',
-        name='Investment Level ($M)',
-        line=dict(color=TIKTOK_COLORS['electric_blue'], width=3),
-        fillcolor=f"{TIKTOK_COLORS['electric_blue']}40"
+        # Line 493-500 - First trace
+fig_polar.add_trace(go.Scatterpolar(
+    r=timeline_data['Priority_Score'],
+    theta=timeline_data['Phase'],
+    fill='toself',
+    name='Priority Level',
+    line=dict(color=TIKTOK_COLORS['primary_pink'], width=3),
+    fillcolor='rgba(255, 0, 80, 0.25)'  # ✅ RGBA format
+))
+
+# Line 502-509 - Second trace  
+fig_polar.add_trace(go.Scatterpolar(
+    r=timeline_data['Investment'],
+    theta=timeline_data['Phase'],
+    fill='toself',
+    name='Investment Level ($M)',
+    line=dict(color=TIKTOK_COLORS['electric_blue'], width=3),
+    fillcolor='rgba(37, 244, 238, 0.25)'  # ✅ RGBA format
+))LORS['electric_blue']}40"
     ))
     
     fig_polar.update_layout(
