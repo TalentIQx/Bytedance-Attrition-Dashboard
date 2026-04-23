@@ -410,7 +410,7 @@ with tabs[3]:
     
     # Generate realistic time series prediction
     np.random.seed(42)
-    base_dates = pd.date_range(start='2024-09-01', periods=forecast_months, freq='M')
+    base_dates = pd.date_range(start='2024-09-01', periods=forecast_months, freq='ME')
     
     # Create multiple scenario projections
     scenarios_forecast = {}
