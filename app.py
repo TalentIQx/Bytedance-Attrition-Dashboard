@@ -117,7 +117,7 @@ tabs = st.tabs([
 ])
 
 # -------------------------------
-# Tab 0: Executive Pulse
+# Tab 1: Executive Pulse
 # -------------------------------
 with tabs[0]:
     st.markdown('<h2 style="color: #FF0050;">🎯 Executive Pulse: The Story Behind the Numbers</h2>', unsafe_allow_html=True)
@@ -292,105 +292,6 @@ with tabs[1]:
     )
 
     st.plotly_chart(fig_treemap, use_container_width=True)
-    
-# -------------------------------
-# Tab 2: Talent Battleground (Competitor Analysis)
-# -------------------------------
-with tabs[1]:
-    st.markdown('<h2 style="color: #FF0050;">🔥 Talent Battleground: The Poaching Wars</h2>', unsafe_allow_html=True)
-    
-    # Interactive radar chart for competitor comparison
-    competitors = ['Meta', 'Google', 'OpenAI', 'Apple', 'Microsoft', 'Amazon']
-    metrics = ['Salary Premium', 'Work-Life Score', 'Brand Appeal', 'Growth Potential', 'Poaching Intensity']
-    
-    # Create radar chart data
-    competitors = ['Meta', 'Google', 'OpenAI', 'Apple', 'Microsoft', 'Amazon']
-metrics = ['Salary Premium', 'Work-Life Score', 'Brand Appeal', 'Growth Potential', 'Poaching Intensity']
-
-competitor_scores = {
-    'Meta': [95, 65, 85, 75, 90],
-    'Google': [88, 80, 90, 85, 85],
-    'OpenAI': [92, 70, 95, 90, 88],
-    'Apple': [85, 75, 88, 70, 75],
-    'Microsoft': [82, 85, 82, 80, 80],
-    'Amazon': [80, 60, 75, 85, 85]
-}
-
-colors = [
-    TIKTOK_COLORS['primary_pink'], TIKTOK_COLORS['electric_blue'],
-    TIKTOK_COLORS['purple'], '#FFA500', '#32CD32', '#FF4500'
-]
-
-fig_radar = go.Figure()
-for i, (competitor, scores) in enumerate(competitor_scores.items()):
-    fig_radar.add_trace(go.Scatterpolar(
-        r=scores + [scores[0]],
-        theta=metrics + [metrics[0]],
-        fill='toself',
-        name=competitor,
-        line=dict(color=colors[i]),
-        fillcolor=colors[i],
-        opacity=0.6
-    ))
-
-fig_radar.update_layout(
-    polar=dict(
-        radialaxis=dict(
-            visible=True,
-            range=[0, 100],
-            gridcolor=TIKTOK_COLORS['electric_blue'],
-            gridwidth=1,
-            tickcolor=TIKTOK_COLORS['white'],
-            tickfont=dict(color=TIKTOK_COLORS['white'])
-        ),
-        angularaxis=dict(
-            tickcolor=TIKTOK_COLORS['white'],
-            tickfont=dict(color=TIKTOK_COLORS['white'], size=12)
-        ),
-        bgcolor=TIKTOK_COLORS['deep_blue']
-    ),
-    showlegend=True,
-    paper_bgcolor=TIKTOK_COLORS['deep_blue'],
-    font=dict(color=TIKTOK_COLORS['white']),
-    height=600,
-    title="Competitor Battle Matrix"
-)
-
-st.plotly_chart(fig_radar, use_container_width=True)
-
-    
-    # Talent Heat Map
-st.markdown("### 🗺️ Geographic Talent Risk Heatmap")
-    
-    # Create a treemap for department risk levels
-dept_data = pd.DataFrame({
-    'Department': ['AI/ML Engineering', 'Backend Engineering', 'Frontend Engineering',
-                   'Data Science', 'Product Management', 'Design', 'DevOps', 'Security'],
-    'RiskScore': [95, 88, 82, 90, 75, 70, 85, 92],
-    'Headcount': [150, 200, 180, 80, 60, 40, 50, 35],
-    'AvgSalary': [180000, 160000, 140000, 170000, 150000, 130000, 155000, 175000]
-})
-
-fig_treemap = px.treemap(
-    dept_data,
-    path=['Department'],
-    values='Headcount',
-    color='RiskScore',
-    color_continuous_scale=[
-        [0, TIKTOK_COLORS['electric_blue']],
-        [0.5, '#FFA500'],
-        [1, TIKTOK_COLORS['primary_pink']]
-    ],
-    title="Department Risk Assessment (Size = Headcount, Color = Risk Level)"
-)
-
-fig_treemap.update_layout(
-    paper_bgcolor=TIKTOK_COLORS['deep_blue'],
-    font=dict(color=TIKTOK_COLORS['white']),
-    height=500
-)
-
-st.plotly_chart(fig_treemap, use_container_width=True)
 
 
 # -------------------------------
