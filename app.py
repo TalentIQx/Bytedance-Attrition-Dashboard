@@ -7,7 +7,10 @@ from plotly.subplots import make_subplots
 
 st.set_page_config(
 
-
+page_title="Bytedance Vibrant Dashboard",
+    page_icon="🌟",
+    layout="wide"
+)
 # ── CSV Upload Block (auto-added by Deploy Agent) ───────────────────────────
 uploaded_file = st.file_uploader(
     "📂 Upload your CSV file",
@@ -26,12 +29,7 @@ except Exception as e:
     st.error(f"❌ Could not read CSV: {e}")
     st.stop()
 # ── End CSV Upload Block ────────────────────────────────────────────────────
-
-    page_title="Bytedance Vibrant Dashboard",
-    page_icon="🌟",
-    layout="wide"
-)
-
+ 
 
 # All Streamlit code goes below this line
 
