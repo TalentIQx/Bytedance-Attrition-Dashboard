@@ -11,7 +11,7 @@ uploaded_file = st.file_uploader(
     type=["csv"],
     help="Export from your HRIS system and upload here.",
 )
-if uploaded_file is None:
+    if uploaded_file is None:
     
 # ── CSV Upload Block (auto-added by Deploy Agent) ───────────────────────────
 uploaded_file = st.file_uploader(
